@@ -10,7 +10,7 @@ else
 endif
 
 
-flash: flash.last_build
+flash: flash.lastbuild
 
 flash.%:
-	cd ${BUILD_DIR} && ninja flash
+	ninja -C${BUILD_DIR}$(patsubst flash.%,%,$@) flash
