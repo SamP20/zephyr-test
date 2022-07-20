@@ -1,6 +1,6 @@
 
-export ZEPHYR_EXTRA_MODULES = ${PROJECT_ROOT}applications/module
-export ZEPHYR_BASE = ${PROJECT_ROOT}zephyrproject/zephyr
+export ZEPHYR_EXTRA_MODULES := $(PROJECT_ROOT)my_module/
+export ZEPHYR_BASE := $(PROJECT_ROOT)zephyrproject/zephyr/
 
 lastbuild.%:
 ifeq ($(OS),Windows_NT)
