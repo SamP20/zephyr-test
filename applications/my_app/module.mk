@@ -1,7 +1,10 @@
 SCRIPT_DIR := $(dir $(lastword $(MAKEFILE_LIST)))
 
-ALL_APPS += my_app.myboard@2.0
+ZEPHYR_APP_ALIASES += board_app_alias
 
-my_app.%: lastbuild.my_app.%
-	cmake -B${BUILD_DIR}$@ -GNinja -DBOARD=$(patsubst my_app.%,%,$@) ${SCRIPT_DIR}
-	ninja -C${BUILD_DIR}$@
+# Final application output
+# This could also depend on other outputs such as signed images
+PHONY: board_app_alias
+board_app_alias: $(BUILD_DIR)board_app_alias/zephyr/zephyr.bin
+board_app_alias: ZEPHYR_BOARD=nucleo_h753zi
+board_app_alias: ZEPHYR_APP_NAME=my_app
